@@ -1,7 +1,7 @@
 FROM robbertkl/base
 MAINTAINER Robbert Klarenbeek <robbertkl@renbeek.nl>
 
-ENV NODE_VERSION=5.1.1
+ENV NODE_VERSION=5.2.0
 RUN curl -sSL "https://nodejs.org/dist/v${NODE_VERSION}/node-v{$NODE_VERSION}-linux-x64.tar.gz" \
     | tar -xzC /usr/local --strip-components=1
 
