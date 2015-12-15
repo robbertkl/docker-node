@@ -1,8 +1,8 @@
 FROM robbertkl/base
 MAINTAINER Robbert Klarenbeek <robbertkl@renbeek.nl>
 
-ENV NODE_VERSION=5.2.0
-RUN curl -sSL "https://nodejs.org/dist/v${NODE_VERSION}/node-v{$NODE_VERSION}-linux-x64.tar.gz" \
+RUN VERSION=`latestversion nodejs/node` \
+    && curl -sSL "https://nodejs.org/dist/v${VERSION}/node-v${VERSION}-linux-x64.tar.gz" \
     | tar -xzC /usr/local --strip-components=1
 
 ENV NPM_CONFIG_LOGLEVEL=info \
