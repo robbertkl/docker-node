@@ -1,9 +1,9 @@
-FROM robbertkl/base
+FROM alpine:latest
 MAINTAINER Robbert Klarenbeek <robbertkl@renbeek.nl>
 
-RUN VERSION=`latestversion nodejs/node` \
-    && curl -sSL "https://nodejs.org/dist/v${VERSION}/node-v${VERSION}-linux-x64.tar.gz" \
-    | tar -xzC /usr/local --strip-components=1
+RUN apk add --no-cache --virtual .docker-node \
+    --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
+    nodejs
 
 ENV NPM_CONFIG_LOGLEVEL=silent \
     NODE_ENV=production
