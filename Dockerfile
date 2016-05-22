@@ -11,4 +11,4 @@ ENV NPM_CONFIG_LOGLEVEL=silent \
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-CMD [ "npm", "start" ]
+CMD [ "node", "." ]
