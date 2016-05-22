@@ -25,9 +25,9 @@ RUN apk add --no-cache --virtual .build-deps \
     cd node-v${VERSION} && \
     export GYP_DEFINES="linux_use_gold_flags=0" && \
     ./configure --prefix=/usr --shared-openssl --shared-zlib && \
-    make -C out mksnapshot BUILDTYPE=Release && \
+    make -j2 -C out mksnapshot BUILDTYPE=Release && \
     paxctl -cm out/Release/mksnapshot && \
-    make && \
+    make -j2 && \
     make install && \
     paxctl -cm /usr/bin/node && \
     cd .. && \
