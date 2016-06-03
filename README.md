@@ -1,7 +1,5 @@
 # robbertkl/node
 
-[![](https://badge.imagelayers.io/robbertkl/node:latest.svg)](https://imagelayers.io/?images=robbertkl/node:latest)
-
 Docker container running Node.js:
 
 * Either run it directly with a mounted volume or extend it into an image with your code included
