@@ -4,7 +4,8 @@ MAINTAINER Robbert Klarenbeek <robbertkl@renbeek.nl>
 RUN apk add --no-cache \
         ca-certificates \
         libgcc \
-        libstdc++
+        libstdc++ \
+        openssl
 
 RUN VERSION=`wget -qO - https://api.github.com/repos/Yelp/dumb-init/tags | grep \"name\": | cut -d\" -f4 | grep -v [-^] | head -n 1 | sed -E s/^v//` && \
     wget -qO /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v${VERSION}/dumb-init_${VERSION}_amd64 && \
