@@ -22,8 +22,8 @@ RUN apk add --no-cache --virtual .build-deps \
         zlib-dev \
     && \
     VERSION=`wget -qO - https://api.github.com/repos/nodejs/node/tags | grep \"name\": | cut -d\" -f4 | grep -v [-^] | head -n 1 | sed -E s/^v//` && \
-    wget -O - https://nodejs.org/dist/v${VERSION}/node-v${VERSION}.tar.gz | tar xzf - && \
-    cd node-v${VERSION} && \
+    wget -O - https://github.com/nodejs/node/archive/v${VERSION}.tar.gz | tar xzf - && \
+    cd node-${VERSION} && \
     export GYP_DEFINES="linux_use_gold_flags=0" && \
     ./configure --prefix=/usr --shared-openssl --shared-zlib && \
     make -j2 -C out mksnapshot BUILDTYPE=Release && \
@@ -32,7 +32,7 @@ RUN apk add --no-cache --virtual .build-deps \
     make install && \
     paxctl -cm /usr/bin/node && \
     cd .. && \
-    rm -rf node-v${VERSION} && \
+    rm -rf node-${VERSION} && \
     apk del .build-deps
 
 ENV NPM_CONFIG_LOGLEVEL=silent \
