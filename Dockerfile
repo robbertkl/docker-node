@@ -3,6 +3,7 @@ MAINTAINER Robbert Klarenbeek <robbertkl@renbeek.nl>
 
 RUN apk add --no-cache \
         ca-certificates \
+        icu-dev \
         libgcc \
         libstdc++ \
         openssl
@@ -25,7 +26,7 @@ RUN apk add --no-cache --virtual .build-deps \
     wget -O - https://github.com/nodejs/node/archive/v${VERSION}.tar.gz | tar xzf - && \
     cd node-${VERSION} && \
     export GYP_DEFINES="linux_use_gold_flags=0" && \
-    ./configure --prefix=/usr --shared-openssl --shared-zlib && \
+    ./configure --prefix=/usr --shared-openssl --shared-zlib --with-intl=system-icu && \
     make -j2 -C out mksnapshot BUILDTYPE=Release && \
     paxctl -cm out/Release/mksnapshot && \
     make -j2 && \
